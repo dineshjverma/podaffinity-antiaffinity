@@ -4,7 +4,7 @@ metadata:
   creationTimestamp: null
   labels:
     app: pod-anti-affinity
-  name: pod-aanti-ffinity
+  name: pod-anti-affinity
 spec:
   replicas: 1
   selector:
