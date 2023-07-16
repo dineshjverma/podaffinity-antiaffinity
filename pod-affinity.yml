@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: pod-affinity
+  name: pod-affinity
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pod-affinity
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: pod-affinity
+    spec:
+      affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: web 
+                operator: In
+                values:
+                -  httpd
+            topologyKey: kubernetes.io/hostname
+      containers:
+      - image: docker.io/httpd
+        name: httpd
+status: {}
